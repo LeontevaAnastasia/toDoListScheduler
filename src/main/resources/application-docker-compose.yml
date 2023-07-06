@@ -1,0 +1,10 @@
+spring:
+  config:
+    activate:
+      on-profile: docker-compose
+  rabbitmq:
+    host: rabbitmq
+  datasource:
+    url: jdbc:postgresql://db:5444/toDoList-api
+    username: compose-postgres
+    password: compose-postgres

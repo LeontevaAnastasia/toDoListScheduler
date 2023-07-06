@@ -1,0 +1,11 @@
+spring:
+  config:
+    activate:
+      on-profile: ide
+  rabbitmq:
+    host: localhost
+    port: 5672
+  datasource:
+    url: jdbc:postgresql://localhost:5444/toDoList-api
+    username: compose-postgres
+    password: compose-postgres

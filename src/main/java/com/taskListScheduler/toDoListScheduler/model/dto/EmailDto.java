@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class EmailDto {
 
-    String recipientAddress;
-    String title;
-    String text;
+    private String recipientAddress;
+    private String title;
+    private String text;
 }
