@@ -1,4 +1,4 @@
-package com.taskListScheduler.toDoListScheduler.model.dto;
+package com.taskListScheduler.toDoListScheduler.to;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

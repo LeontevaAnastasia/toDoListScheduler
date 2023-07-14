@@ -6,5 +6,5 @@ spring:
     host: rabbitmq
   datasource:
     url: jdbc:postgresql://db:5444/toDoList-api
-    username: compose-postgres
-    password: compose-postgres
+    username: admin
+    password: admin

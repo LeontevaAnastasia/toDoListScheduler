@@ -7,5 +7,5 @@ spring:
     port: 5672
   datasource:
     url: jdbc:postgresql://localhost:5444/toDoList-api
-    username: compose-postgres
-    password: compose-postgres
+    username: admin
+    password: admin

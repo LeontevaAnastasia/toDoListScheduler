@@ -10,8 +10,8 @@ spring:
   datasource:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5444/toDoList-api
-    username: compose-postgres
-    password: compose-postgres
+    username: admin
+    password: admin
 
 rabbit:
   queue: EMAIL_SENDING_TASKS

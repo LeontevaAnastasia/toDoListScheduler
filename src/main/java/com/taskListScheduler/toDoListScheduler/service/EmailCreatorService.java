@@ -1,16 +1,18 @@
 package com.taskListScheduler.toDoListScheduler.service;
 
 import com.taskListScheduler.toDoListScheduler.model.User;
-import com.taskListScheduler.toDoListScheduler.model.dto.EmailDto;
+import com.taskListScheduler.toDoListScheduler.to.EmailDto;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class EmailCreatorService {
 
-    EmailCreator emailCreator;
+    private final TaskReportEmailCreator emailCreator;
 
     public List<EmailDto> getEmailMessages(List<User> users) {
          List<EmailDto>emailMessages = new ArrayList<>();

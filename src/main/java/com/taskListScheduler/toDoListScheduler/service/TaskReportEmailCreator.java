@@ -11,20 +11,17 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Service
-public class TaskReportEmailCreator implements EmailCreator {
+public class TaskReportEmailCreator {
 
-    @Override
     public String createEmailAddress(User user) {
         return user.getEmail();
     }
 
-    @Override
     public String createEmailTitle(User user) {
         return "Отчет о выполнении задач пользователем " + user.getEmail() +
                 "за " + LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
 
-    @Override
     public String createEmailText(User user) {
         StringBuilder emailText = new StringBuilder();
         addUncompletedTasksInfo(emailText, user.getTasks());
