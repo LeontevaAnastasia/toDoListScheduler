@@ -1,29 +1,21 @@
-package com.taskListScheduler.toDoListScheduler.service.rabbitmq;
+package com.taskListScheduler.toDoListScheduler.emailService.rabbitmq;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
+@Slf4j
 public class RabbitProducer {
       private final RabbitTemplate rabbitTemplate;
 
     @Value("${rabbit.exchange}")
     private String topicExchangeName;
-
     @Value("${rabbit.routing-key}")
     private String routingKey;
-
-
-
-    private static final Logger log = LoggerFactory.getLogger(RabbitProducer.class);
-
-    public RabbitProducer(RabbitTemplate rabbitTemplate) {
-        this.rabbitTemplate = rabbitTemplate;
-    }
-
 
     public void sendMessage(String message) {
             try {

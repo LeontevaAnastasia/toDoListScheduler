@@ -1,14 +1,12 @@
-package com.taskListScheduler.toDoListScheduler.service;
+package com.taskListScheduler.toDoListScheduler.emailService;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.taskListScheduler.toDoListScheduler.model.User;
-import com.taskListScheduler.toDoListScheduler.to.EmailDto;
+import com.taskListScheduler.toDoListScheduler.to.EmailTo;
 import com.taskListScheduler.toDoListScheduler.repository.UserRepository;
-import com.taskListScheduler.toDoListScheduler.service.rabbitmq.RabbitProducer;
+import com.taskListScheduler.toDoListScheduler.emailService.rabbitmq.RabbitProducer;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -28,16 +26,14 @@ public class SendEmailsScheduler {
 
 
     // every midnight
-    //  @Scheduled(cron = "0 0 0 * * *")
-
-    @Scheduled(cron = "* * * * * *")
+      @Scheduled(cron = "0 0 0 * * *")
         public void sendEmails() {
             List<User> users = userRepository.findAll();
-            List<EmailDto> emailMessages = emailCreatorService.getEmailMessages(users);
+            List<EmailTo> emailMessages = emailCreatorService.getEmailMessages(users);
 
-            ObjectMapper mapper = new JsonMapper();
+            ObjectMapper mapper = new ObjectMapper();
             try {
-                for (EmailDto emailMessage : emailMessages) {
+                for (EmailTo emailMessage:emailMessages) {
                     String json = mapper.writeValueAsString(emailMessage);
                     rabbitProducer.sendMessage(json);
                 }
